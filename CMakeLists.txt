@@ -1,16 +1,25 @@
+cat << 'EOF' > CMakeLists.txt
 cmake_minimum_required(VERSION 3.25)
 
-project(FrameVisual)
+# Sets the project name (matches your mod.json ID)
+project(derland6666.framevisual)
 
 find_package(Geode REQUIRED)
 
+# Configures the mod build
 add_geode_mod(
     derland6666.framevisual
     VERSION v1.0.0
+    # Tells CMake where your code is located
     SOURCES src/main.cpp
 )
 
-# Link standard libraries if needed for specific platforms
-if(WIN32)
-    target_compile_definitions(derland6666.framevisual PUBLIC NOMINMAX)
+# Optimization for MSVC (Windows) users
+if(MSVC)
+    target_compile_options(${PROJECT_NAME} PRIVATE /W4)
 endif()
+EOF
+
+git add CMakeLists.txt
+git commit -m "Add final CMakeLists.txt for build configuration"
+git push
