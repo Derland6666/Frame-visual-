@@ -1,0 +1,31 @@
+{
+    "geode": "4.1.0",
+    "gd": {
+        "win": "2.2074",
+        "android": "2.2074"
+    },
+    "id": "derland6666.framevisual",
+    "name": "Frame-Visual Ultra",
+    "version": "1.0.0",
+    "developer": "Derland6666",
+    "description": "Spatial-partitioned timing helper for frame-perfect gameplay.",
+    "settings": {
+        "enabled": {
+            "name": "Enable Mod",
+            "type": "bool",
+            "default": true
+        },
+        "glow-color-green": {
+            "name": "Safe Color",
+            "type": "color",
+            "default": "#00FF00"
+        },
+        "opacity": {
+            "name": "Opacity",
+            "type": "int",
+            "default": 100,
+            "min": 0,
+            "max": 100
+        }
+    }
+}
