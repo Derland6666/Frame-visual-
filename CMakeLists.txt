@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.25)
 
+gh repo clone Derland6666/Frame-visual-
+
 # Sets the project name (matches your mod.json ID)
 project(derland6666.framevisual)
 
