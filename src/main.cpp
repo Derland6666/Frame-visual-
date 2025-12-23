@@ -1,5 +1,3 @@
-mkdir -p src
-
 // src/main.cpp - Frame-Visual Geode Mod (Ultra Performance Edition)
 #include <Geode/Geode.hpp>
 #include <Geode/modify/PlayLayer.hpp>
@@ -134,14 +132,13 @@ class $modify(FrameVisualPlayer, PlayerObject) {
     void pushButton(PlayerButton btn) {
         PlayerObject::pushButton(btn);
         if (!Mod::get()->getSettingValue<bool>("enabled")) return;
-
-        auto playLayer = PlayLayer::get();
-        if (!playLayer) return;
-
-        auto fields = static_cast<FrameVisualPlayLayer*>(playLayer)->m_fields.self();
-        
+        auto pl = PlayLayer::get();
+        if (!pl) return;
+        auto fields = static_cast<FrameVisualPlayLayer*>(pl)->m_fields.self();
         float pX = this->getPositionX();
         std::vector<GameObject*> nearby;
-        fields->spatialGrid.queryRange(pX, pX + 200.0f, nearby);
+        fields->spatialGrid.queryRange(pX, pX + 100.0f, nearby);
+        auto color = Mod::get()->getSettingValue<ccColor3B>("glow-color-green");
+        for (auto obj : nearby) { obj->setObjectColor(color); }
     }
-}
+};
