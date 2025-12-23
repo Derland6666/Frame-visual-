@@ -144,9 +144,4 @@ class $modify(FrameVisualPlayer, PlayerObject) {
         std::vector<GameObject*> nearby;
         fields->spatialGrid.queryRange(pX, pX + 200.0f, nearby);
     }
-};
-EOF
-
-git add src/main.cpp
-git commit -m "Final cleanup of main.cpp and project structure"
-git push
+}
