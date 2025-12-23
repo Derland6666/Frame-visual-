@@ -1,6 +1,5 @@
 mkdir -p src
 
-cat << 'EOF' > src/main.cpp
 // src/main.cpp - Frame-Visual Geode Mod (Ultra Performance Edition)
 #include <Geode/Geode.hpp>
 #include <Geode/modify/PlayLayer.hpp>
