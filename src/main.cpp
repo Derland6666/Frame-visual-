@@ -1,3 +1,6 @@
+mkdir -p src
+
+cat << 'EOF' > src/main.cpp
 // src/main.cpp - Frame-Visual Geode Mod (Ultra Performance Edition)
 #include <Geode/Geode.hpp>
 #include <Geode/modify/PlayLayer.hpp>
@@ -14,7 +17,6 @@
 
 using namespace geode::prelude;
 
-// Timing Statistics
 struct TimingStats {
     int earlyCount = 0;
     int midCount = 0;
@@ -26,7 +28,6 @@ struct TimingStats {
 
 static TimingStats g_stats;
 
-// Optimized glow data
 struct GlowData {
     CCSprite* sprite = nullptr;
     bool isSafe = false;
@@ -34,7 +35,6 @@ struct GlowData {
     bool needsUpdate = true;
 };
 
-// Object pool for high-performance sprite reuse
 class SpritePool {
 private:
     std::vector<CCSprite*> available;
@@ -75,7 +75,6 @@ public:
 
 static SpritePool g_spritePool;
 
-// Spatial Grid for O(1) object lookups
 class SpatialGrid {
 private:
     struct Cell { std::vector<GameObject*> objects; };
@@ -101,9 +100,6 @@ public:
     }
 };
 
-
-
-// PlayLayer Hook
 class $modify(FrameVisualPlayLayer, PlayLayer) {
     struct Fields {
         SpatialGrid spatialGrid;
@@ -135,7 +131,6 @@ class $modify(FrameVisualPlayLayer, PlayLayer) {
     }
 };
 
-// PlayerObject Hook
 class $modify(FrameVisualPlayer, PlayerObject) {
     void pushButton(PlayerButton btn) {
         PlayerObject::pushButton(btn);
@@ -144,13 +139,15 @@ class $modify(FrameVisualPlayer, PlayerObject) {
         auto playLayer = PlayLayer::get();
         if (!playLayer) return;
 
-        // Correct cross-class field access
         auto fields = static_cast<FrameVisualPlayLayer*>(playLayer)->m_fields.self();
         
         float pX = this->getPositionX();
         std::vector<GameObject*> nearby;
         fields->spatialGrid.queryRange(pX, pX + 200.0f, nearby);
-
-        // Timing logic here (using 'nearby' vector for O(1) performance)
     }
 };
+EOF
+
+git add src/main.cpp
+git commit -m "Final cleanup of main.cpp and project structure"
+git push
