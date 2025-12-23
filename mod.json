@@ -1,14 +1,17 @@
+cat << 'EOF' > mod.json
 {
     "geode": "4.1.0",
     "gd": {
         "win": "2.2074",
-        "android": "2.2074"
+        "android": "2.2074",
+        "mac": "2.2074",
+        "ios": "2.2074"
     },
     "id": "derland6666.framevisual",
     "name": "Frame-Visual Ultra",
     "version": "1.0.0",
     "developer": "Derland6666",
-    "description": "Spatial-partitioned timing helper for frame-perfect gameplay.",
+    "description": "The most optimized timing helper. Uses a Spatial Grid Engine to handle extreme object counts with zero FPS drop.",
     "settings": {
         "enabled": {
             "name": "Enable Mod",
@@ -19,13 +22,11 @@
             "name": "Safe Color",
             "type": "color",
             "default": "#00FF00"
-        },
-        "opacity": {
-            "name": "Opacity",
-            "type": "int",
-            "default": 100,
-            "min": 0,
-            "max": 100
         }
     }
 }
+EOF
+
+git add mod.json
+git commit -m "Add final mod.json with updated metadata"
+git push
