@@ -14,13 +14,30 @@
     "settings": {
         "enabled": {
             "name": "Enable Mod",
+            "description": "Toggle the timing helper logic on or off.",
             "type": "bool",
             "default": true
         },
         "glow-color-green": {
             "name": "Safe Color",
+            "description": "The color applied to hazards when in a safe timing window.",
             "type": "color",
             "default": "#00FF00"
+        },
+        "glow-opacity": {
+            "name": "Glow Opacity",
+            "description": "Adjust how bright the visual feedback appears.",
+            "type": "float",
+            "default": 1.0,
+            "min": 0.0,
+            "max": 1.0,
+            "control": "slider"
+        },
+        "stats-counter": {
+            "name": "Stats Counter",
+            "description": "Show the Early/Mid/Late click tracking UI on screen.",
+            "type": "bool",
+            "default": false
         }
     }
 }
