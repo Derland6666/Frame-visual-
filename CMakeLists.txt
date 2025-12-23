@@ -1,4 +1,3 @@
-cat << 'EOF' > CMakeLists.txt
 cmake_minimum_required(VERSION 3.25)
 
 # Sets the project name (matches your mod.json ID)
@@ -18,8 +17,3 @@ add_geode_mod(
 if(MSVC)
     target_compile_options(${PROJECT_NAME} PRIVATE /W4)
 endif()
-EOF
-
-git add CMakeLists.txt
-git commit -m "Add final CMakeLists.txt for build configuration"
-git push
